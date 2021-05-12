@@ -79,7 +79,13 @@ app.put('/todos/:id', (req, res) => {
 })
 
 app.patch('/todos/:id/done', (req, res) => {
-    // Complete aqui
+    const { id } = req.params
+    const { todos } = req.user
+
+    const todo = todos.find(todo => todo.id === id)
+    if (!todo) return res.status(404).json({ error: 'Todo does not exist' })
+    todo.done = !todo.done
+    res.status(200).json(todo)
 })
 
 app.delete('/todos/:id', (req, res) => {
