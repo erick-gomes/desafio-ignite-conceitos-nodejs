@@ -1,0 +1,20 @@
+//is not accepted empty param
+DELETE http://localhost:3333/todos/:id
+//is not accepted empty username
+
+###
+//
+// :id deve ser substituído pelo uuidv4 obtido ao criar todo de um usuário
+// Abaixo exemplo de um id aleatório
+DELETE http://localhost:3333/todos/9c10c913-a619-42bd-8ed3-cf173c59550d
+username: Erick8080
+
+###
+
+DELETE http://localhost:3333/todos/:id
+username: DiegoLeon800
+
+###
+
+DELETE http://localhost:3333/todos/:id
+username: AndreiBR

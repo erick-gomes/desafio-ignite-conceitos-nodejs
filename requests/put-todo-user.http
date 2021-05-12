@@ -1,5 +1,5 @@
 //is not accepted empty param
-PUT http://localhost:3333/todos
+PUT http://localhost:3333/todos/:id
 Content-Type: application/json
 username: Erick8080
 
