@@ -1,0 +1,20 @@
+//is not accepted empty param
+PATCH http://localhost:3333/todos/:id/done
+//is not accepted empty username
+
+###
+//
+// :id deve ser substituído pelo uuidv4 obtido ao criar todo de um usuário
+// Abaixo exemplo de um id aleatório
+PATCH http://localhost:3333/todos/0db41910-cded-4833-aa0c-b1eff7b5d6db/done
+username: Erick8080
+
+###
+
+PATCH http://localhost:3333/todos/:id/done
+username: DiegoLeon800
+
+###
+
+PATCH http://localhost:3333/todos/:id/done
+username: AndreiBR
