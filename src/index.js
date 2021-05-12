@@ -17,6 +17,8 @@ const users = new Set()
 function checksExistsUserAccount (req, res, next) {
     const { username } = req.headers
     const userArr = Array.from(users)
+    console.log(userArr)
+    console.log(username)
     const user = userArr.find(user => user.username === username)
     if (!user) return res.status(404).json({ error: 'User does not exist' })
     req.user = user
@@ -49,7 +51,22 @@ app.get('/todos', (req, res) => {
 })
 
 app.post('/todos', (req, res) => {
-    // Complete aqui
+    const { title, deadline } = req.body
+    const { todos } = req.user
+
+    if (!title || !deadline) {
+        return res.status(404).json({ error: 'Title or deadline not found' })
+    }
+    const todo = {
+        id: uuidv4(),
+        title,
+        done: false,
+        deadline: new Date(deadline),
+        created_at: new Date()
+    }
+
+    todos.push(todo)
+    res.status(201).json(todo)
 })
 
 app.put('/todos/:id', (req, res) => {

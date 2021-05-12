@@ -1,0 +1,30 @@
+POST http://localhost:3333/todos
+Content-Type: application/json
+username: AndreiBR
+
+{
+    
+}
+
+###
+
+POST http://localhost:3333/todos
+Accept-Charset: UTF-8
+Content-Type: application/json
+username: DiegoLeão800
+
+{
+    "title" : "Limpar a cozinha",
+    "deadline": "2021-05-20"
+}
+
+###
+
+POST http://localhost:3333/todos
+Content-Type: application/json
+username: Erick8080
+
+{
+    "title" : "Lavar a louça",
+    "deadline": "2021-06-20"
+}
