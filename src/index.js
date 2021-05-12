@@ -66,7 +66,16 @@ app.post('/todos', (req, res) => {
 })
 
 app.put('/todos/:id', (req, res) => {
-    // Complete aqui
+    const { title, deadline } = req.body
+    const { id } = req.params
+    const { todos } = req.user
+
+    if (!title || !deadline) return res.status(404).json({ error: 'Title or deadline not found' })
+    const todo = todos.find(todo => todo.id === id)
+    if (!todo) return res.status(404).json({ error: 'Todo does not exist' })
+    todo.title = title
+    todo.deadline = new Date(deadline)
+    res.status(200).json(todo)
 })
 
 app.patch('/todos/:id/done', (req, res) => {
