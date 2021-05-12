@@ -1,0 +1,27 @@
+POST http://localhost:3333/users
+Content-Type: application/json
+
+{
+    "name": "Erick",
+    "username": "Erick8080"
+}
+
+###
+
+POST http://localhost:3333/users
+Content-Type: application/json
+
+{
+    "name": "Diego",
+    "username": "DiegoLeão800"
+}
+
+###
+
+POST http://localhost:3333/users
+Content-Type: application/json
+
+{
+    "name": "André",
+    "username": "AndreiBR"
+}
