@@ -1,0 +1,17 @@
+GET http://localhost:3333/todos
+// is not accepted empty username
+
+###
+
+GET http://localhost:3333/todos
+username: Erick8080
+
+###
+
+GET http://localhost:3333/todos
+username: DiegoLeão800
+
+###
+
+GET http://localhost:3333/todos
+username: AndreiBR
