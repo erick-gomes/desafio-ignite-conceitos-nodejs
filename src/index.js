@@ -1,13 +1,13 @@
 const express = require('express')
 const cors = require('cors')
-// const { v4: uuidv4 } = require('uuid')
+const { v4: uuidv4 } = require('uuid')
 
 const app = express()
 
 app.use(cors())
 app.use(express.json())
 
-// const users = new Set()
+const users = new Set()
 
 /**
  * @param {express.Request<ParamsDictionary, any, any, qs.ParsedQs, Record<string, any>>} req Requisição http
@@ -15,11 +15,19 @@ app.use(express.json())
  * @param {express.NextFunction} next Função do middleware
  */
 function checksExistsUserAccount (req, res, next) {
-    // Complete aqui
+    next()
 }
 
 app.post('/users', (req, res) => {
-    // Complete aqui
+    const { name, username } = req.body
+    const user = {
+        id: uuidv4(),
+        name,
+        username,
+        todos: []
+    }
+    users.add(user)
+    res.status(201).json(user)
 })
 
 app.use(checksExistsUserAccount)
