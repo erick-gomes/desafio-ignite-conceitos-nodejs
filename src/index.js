@@ -7,7 +7,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-const users = new Set()
+const users = []
 
 /**
  * @param {express.Request<ParamsDictionary, any, any, qs.ParsedQs, Record<string, any>>} req Requisição http
@@ -16,10 +16,7 @@ const users = new Set()
  */
 function checksExistsUserAccount (req, res, next) {
     const { username } = req.headers
-    const userArr = Array.from(users)
-    console.log(userArr)
-    console.log(username)
-    const user = userArr.find(user => user.username === username)
+    const user = users.find(user => user.username === username)
     if (!user) return res.status(404).json({ error: 'User does not exist' })
     req.user = user
     next()
@@ -27,8 +24,7 @@ function checksExistsUserAccount (req, res, next) {
 
 app.post('/users', (req, res) => {
     const { name, username } = req.body
-    const userArr = Array.from(users)
-    const usernameExist = userArr.find(user => user.username === username)
+    const usernameExist = users.find(user => user.username === username)
     if (usernameExist) {
         return res.status(400).json({ error: 'Username already in use' })
     }
@@ -39,7 +35,7 @@ app.post('/users', (req, res) => {
         username,
         todos: []
     }
-    users.add(user)
+    users.push(user)
     res.status(201).json(user)
 })
 
