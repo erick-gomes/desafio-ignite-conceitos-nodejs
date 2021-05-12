@@ -9,7 +9,6 @@ username: AndreiBR
 ###
 
 POST http://localhost:3333/todos
-Accept-Charset: UTF-8
 Content-Type: application/json
 username: DiegoLeon800
 
