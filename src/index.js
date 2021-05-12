@@ -16,17 +16,18 @@ const users = new Set()
  */
 function checksExistsUserAccount (req, res, next) {
     const { username } = req.headers
-    const userExist = users.has(username)
-    if (!userExist) return res.status(404).json({ error: 'User does not exist' })
     const userArr = Array.from(users)
-    const user = userArr.find(user => user === username)
+    const user = userArr.find(user => user.username === username)
+    if (!user) return res.status(404).json({ error: 'User does not exist' })
     req.user = user
     next()
 }
 
 app.post('/users', (req, res) => {
     const { name, username } = req.body
-    if (users.has(username)) {
+    const userArr = Array.from(users)
+    const usernameExist = userArr.find(user => user.username === username)
+    if (usernameExist) {
         return res.status(400).json({ error: 'Username already in use' })
     }
     if (!name || !username) return res.status(404).json({ error: 'Name or username not found' })
@@ -43,7 +44,8 @@ app.post('/users', (req, res) => {
 app.use(checksExistsUserAccount)
 
 app.get('/todos', (req, res) => {
-    // Complete aqui
+    const { todos } = req.user
+    res.status(200).json(todos)
 })
 
 app.post('/todos', (req, res) => {
