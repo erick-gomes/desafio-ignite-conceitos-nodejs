@@ -15,6 +15,12 @@ const users = new Set()
  * @param {express.NextFunction} next Função do middleware
  */
 function checksExistsUserAccount (req, res, next) {
+    const { username } = req.headers
+    const userExist = users.has(username)
+    if (!userExist) return res.status(404).json({ error: 'User does not exist' })
+    const userArr = Array.from(users)
+    const user = userArr.find(user => user === username)
+    req.user = user
     next()
 }
 
