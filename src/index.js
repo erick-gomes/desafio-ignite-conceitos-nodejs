@@ -20,6 +20,9 @@ function checksExistsUserAccount (req, res, next) {
 
 app.post('/users', (req, res) => {
     const { name, username } = req.body
+    if (!name && !username) {
+        return res.status(400).json({ error: 'Name or username not found' })
+    }
     const user = {
         id: uuidv4(),
         name,
