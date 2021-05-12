@@ -1,0 +1,45 @@
+//is not accepted empty param
+PUT http://localhost:3333/todos
+Content-Type: application/json
+username: Erick8080
+
+{
+    //is not accepted empty body
+    "title": "",
+    "deadline": ""
+}
+
+###
+//
+// :id deve ser substituído pelo uuidv4 obtido ao criar todo de um usuário
+// Abaixo exemplo de um id aleatório
+PUT http://localhost:3333/todos/0a7a2010-c24b-4773-9e4e-8dc1135b0916
+Content-Type: application/json
+username: Erick8080
+
+{
+    "title": "Acordar as 6 da manhã",
+    "deadline": "2021-06-17"
+}
+
+###
+
+PUT http://localhost:3333/todos/:id
+Content-Type: application/json
+username: DiegoLeon800
+
+{
+    "title": "Ir para uma reunião",
+    "deadline": "2021-07-04"
+}
+
+###
+
+PUT http://localhost:3333/todos/:id
+Content-Type: application/json
+username: AndreiBR
+
+{
+    "title": "",
+    "deadline": "2021-08-02"
+}

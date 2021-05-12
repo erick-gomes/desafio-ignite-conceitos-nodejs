@@ -3,7 +3,7 @@ Content-Type: application/json
 username: AndreiBR
 
 {
-    
+    //is not accepted empty body
 }
 
 ###
