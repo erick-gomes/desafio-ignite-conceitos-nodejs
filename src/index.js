@@ -89,7 +89,13 @@ app.patch('/todos/:id/done', (req, res) => {
 })
 
 app.delete('/todos/:id', (req, res) => {
-    // Complete aqui
+    const { id } = req.params
+    const { todos } = req.user
+
+    const todo = todos.findIndex(todo => todo.id === id)
+    if (todo === -1) return res.status(404).json({ error: 'Todo does not exist' })
+    todos.splice(todo, 1)
+    res.status(204).json()
 })
 
 module.exports = app
